@@ -5,6 +5,8 @@ import $ from 'jquery'
 class Product extends Component {
   state = {
     product: undefined,
+    deliveryMethod: undefined,
+    quantity: undefined,
     orderNumber: undefined
   }
 
@@ -48,13 +50,17 @@ class Product extends Component {
               {product.deliveredPrices.map(p =>
                 <div className='form-check'>
                   <label className='form-check-label'>
-                    <input type='radio' className='form-check-input' value={p.deliveryMethodCode} name='delivery' onChange={e => this.handleFieldChange('name', e.target.value)} />
+                    <input type='radio' className='form-check-input' value={p.deliveryMethodCode} name='delivery' onChange={e => this.handleFieldChange('deliveryMethod', e.target.value)} />
                     {p.description} - ${p.price.toFixed(2)}
                   </label>
                 </div>
               )}
+              <div className='form-group'>
+                <label for='qty'>Quantity</label>
+                <input id='qty' type='text' placeholder='Qty' className='form-control' style={{width:50}} onChange={e => this.handleFieldChange('quantity', e.target.value)} />
+              </div>
               <button className='btn btn-primary' onClick={this.onSubmit}>Place Order</button>
-              <div>{this.state.orderNumber}</div>
+              <h3>{this.state.orderNumber}</h3>
             </fieldset>
           </div>
         : <img src='../triangles.svg' alt='loading' />}
