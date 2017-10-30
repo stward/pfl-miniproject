@@ -88,8 +88,7 @@ router.post('/', function(req, res, next) {
   })
     .then((res) => res.json())
     .then(function(data) {
-      console.log(data.results.errors)
-      res.json('an order')
+      res.json('Order #12345')
     })
     .catch(function(error) {
       console.log(error)

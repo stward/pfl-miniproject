@@ -5,7 +5,6 @@ import $ from 'jquery'
 class Product extends Component {
   state = {
     product: undefined,
-    productPrice: undefined,
     orderNumber: undefined
   }
 
@@ -28,13 +27,11 @@ class Product extends Component {
       method: 'POST',
       data: this.state
     }).done(function(data) {
-      console.log(data)
       that.setState({orderNumber: data})
     })
   }
 
   render() {
-    console.log(this.state)
     let product = this.state.product
     return (
       <div>
@@ -52,13 +49,12 @@ class Product extends Component {
                 <div className='form-check'>
                   <label className='form-check-label'>
                     <input type='radio' className='form-check-input' value={p.deliveryMethodCode} name='delivery' onChange={e => this.handleFieldChange('name', e.target.value)} />
-                    {p.description}
+                    {p.description} - ${p.price.toFixed(2)}
                   </label>
                 </div>
               )}
-              {/* <button onClick={this.onSubmit}>Clicky</button> */}
+              <button className='btn btn-primary' onClick={this.onSubmit}>Place Order</button>
               <div>{this.state.orderNumber}</div>
-              <h4>{this.state.price}</h4>
             </fieldset>
           </div>
         : <img src='../triangles.svg' alt='loading' />}

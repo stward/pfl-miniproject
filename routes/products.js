@@ -36,7 +36,6 @@ router.get('/:id', function(req, res, next) {
         return product.id === id
       }
       const product = data.results.data.find(findProduct)
-      console.log(product)
       res.json(product)
     })
     .catch(function(error) {
