@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 2%;
+  padding-bottom: 5%;
+  font-family: sans-serif;
+}
+
+a {
+  color: grey;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.nav {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+.productContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.productContainer div {
+  padding: 3%;
+}
+
+.productContainer div img {
+  max-height: 150px;
+}
+
+.featuredImage {
+  padding: 5% 0;
+}
