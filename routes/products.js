@@ -20,9 +20,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/:id', function(req, res, next) {
-  // Need product detail api to work for this
-  // fetch('https://testapi.pfl.com/products/' + req.params.id + '?apikey=136085', {
-  fetch('https://testapi.pfl.com/products?apikey=136085', {
+  fetch('https://testapi.pfl.com/products/' + req.params.id + '?apikey=136085', {
     method: 'GET',
     headers: {
       'Authorization': 'Basic bWluaXByb2plY3Q6UHIhbnQxMjM=',
@@ -31,12 +29,7 @@ router.get('/:id', function(req, res, next) {
   })
     .then((res) => res.json())
     .then(function(data) {
-      let id = Number(req.params.id)
-      function findProduct(product) {
-        return product.id === id
-      }
-      const product = data.results.data.find(findProduct)
-      res.json(product)
+      res.json(data)
     })
     .catch(function(error) {
       console.log(error)

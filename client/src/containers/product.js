@@ -35,6 +35,9 @@ class Product extends Component {
 
   render() {
     let product = this.state.product
+    product ?
+      console.log(this.state)
+    : null
     return (
       <div>
         <div className='nav'>
@@ -42,12 +45,12 @@ class Product extends Component {
         </div>
         <Link to={'/'}><h1><img src='../pfl-logo.png' alt='Printing For Less' /></h1></Link>
         {product ?
-          <div id={product.id}>
-            <h2>{product.name}</h2>
-            <img src={product.imageURL} alt={product.name} className='featuredImage' />
+          <div id={product.results.data.id}>
+            <h2>{product.results.data.name}</h2>
+            <img src={product.results.data.imageURL} alt={product.results.data.name} className='featuredImage' />
             <h3>Order Options</h3>
             <fieldset className="form-group">
-              {product.deliveredPrices.map(p =>
+              {product.results.data.deliveredPrices.map(p =>
                 <div className='form-check'>
                   <label className='form-check-label'>
                     <input type='radio' className='form-check-input' value={p.deliveryMethodCode} name='delivery' onChange={e => this.handleFieldChange('deliveryMethod', e.target.value)} />
@@ -56,11 +59,11 @@ class Product extends Component {
                 </div>
               )}
               <div className='form-group'>
-                <label for='qty'>Quantity</label>
-                <input id='qty' type='text' placeholder='Qty' className='form-control' style={{width:50}} onChange={e => this.handleFieldChange('quantity', e.target.value)} />
+                <label htmlFor='qty'>Quantity</label>
+                <input id='qty' type='text' placeholder='Qty' className='form-control' style={{width:100}} onChange={e => this.handleFieldChange('quantity', e.target.value)} />
               </div>
               <button className='btn btn-primary' onClick={this.onSubmit}>Place Order</button>
-              <h3>{this.state.orderNumber}</h3>
+              <h3>Order Number: {this.state.orderNumber}</h3>
             </fieldset>
           </div>
         : <img src='../triangles.svg' alt='loading' />}

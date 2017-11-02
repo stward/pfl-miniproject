@@ -20,7 +20,7 @@ class Products extends Component {
           {this.state.products.data ?
             this.state.products.data.map(p =>
               <div key={p.id}>
-                <Link to={'/products/' + p.id}>
+                <Link to={'/products/' + p.productID}>
                   <img src={p.imageURL} alt={p.name} />
                   <div>{p.name}</div>
                 </Link>
